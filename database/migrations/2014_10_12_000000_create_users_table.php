@@ -22,6 +22,15 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->text('profile_photo_path')->nullable();
+            /*Campos personalizados*/
+            $table->char('ativo')->default('0');
+            $table->timestamp('validacao_email', 0)->nullable();
+            $table->timestamp('termos_de_uso', 0)->nullable();
+            $table->char('usuario_tipo')->nullable(); // Usuario padrão, Usuario Pro
+            $table->timestamp('ultimo_login', 0)->nullable()->nullable();
+            $table->string('ultimo_ip', 15)->nullable();
+            $table->string('observacao')->nullable();
+
             $table->timestamps();
         });
     }

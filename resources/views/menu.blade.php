@@ -12,13 +12,21 @@
         <a class="nav-link" href="/login">login</a>
       </li>
     </ul>
+    @isset($user)
     <ul class="navbar-nav float-right">
       <li class="nav-item">
-        <a class="nav-link"><strong>Usuário: </strong> xxxxxxxxxxx</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/dashboard">Dashboard</a>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle btn-light" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <strong>Usuário: </strong> {{$user->name}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="/user/anuncios">Meus anúncios</a>
+          <a class="dropdown-item" href="/user/editar-cadastro">Meu cadastro</a>
+          <a class="dropdown-item" href="/user/logout">Sair</a>
+        </div>
+      </div>
       </li>
     </ul>
+    @endisset
   </div>
 </nav>

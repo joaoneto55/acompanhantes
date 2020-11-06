@@ -27,7 +27,7 @@ class Anuncio extends Model
     public function getAnunciosUsuario($idUsuario){
         $anuncio = DB::table('anuncios as T1')
             ->select('T1.*')
-            ->where('T1.usuarios_id', '=', $idUsuario)
+            ->where('T1.user_id', '=', $idUsuario)
             ->get();
         return $anuncio;
     }

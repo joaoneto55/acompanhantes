@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Anuncio;
+use Illuminate\Support\Facades\Auth;
 
 class AnuncioController extends Controller
 {
     public function index(){
         $anuncioModel = new Anuncio();
         $anuncios = $anuncioModel->getAllAnuncios();
-        return view('anuncios', ['anuncios' => $anuncios]);
+        $user = Auth::user();
+        return view('anuncios', ['anuncios' => $anuncios, 'user' => $user]);
     }
 
     public function getAnuncio($id){
@@ -26,7 +28,8 @@ class AnuncioController extends Controller
                 }
             }
         }
-        return view('anuncio', ['anuncio' => $anuncio]);
+        $user = Auth::user();
+        return view('anuncio', ['anuncio' => $anuncio, 'user' => $user]);
     }
 
     public function pesquisa(Request $request){
@@ -53,7 +56,8 @@ class AnuncioController extends Controller
         }
         $anuncioModel = new Anuncio();
         $anuncios = $anuncioModel->getAnunciosFiltros($arrayFiltros);
-        return view('anuncios', ['anuncios' => $anuncios]);        
+        $user = Auth::user();
+        return view('anuncios', ['anuncios' => $anuncios, 'user' => $user]);     
     }
 
 
